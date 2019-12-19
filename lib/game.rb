@@ -1,7 +1,7 @@
 class Game
   attr_reader :position
   COMMANDS = ["look", "take"]
-  # DIRECTIONS = ["n", "s", "e", "w"]
+  DIRECTIONS = ["n", "s", "e", "w"]
 
   def initialize
     Room.create_map
@@ -46,8 +46,12 @@ class Game
     is_command?(user_input) || is_direction?(user_input)
   end
 
-  def invalid_choice
-    puts "Invalid Input.".red
+  def invalid_choice(user_input)
+    if DIRECTIONS.include?(user_input.downcase)
+      puts "You can't go that way.".red
+    else
+      puts "Invalid Command.".red
+    end
     puts "\n"
     update
   end
@@ -104,7 +108,7 @@ class Game
       user_input = gets.strip
       puts "\n"
       input_is_valid?(user_input) ?
-        action(user_input) : invalid_choice
+        action(user_input) : invalid_choice(user_input)
     end
   end
 end
