@@ -27,15 +27,13 @@ class Game
   def look
     current_room.description
   end
+
   def input_is_valid?(user_input)
-    user_input.downcase == 'n' ||
-    user_input.downcase == 's' ||
-    user_input.downcase == 'e' ||
-    user_input.downcase == 'w'
+    is_command?(user_input) || is_direction?(user_input)
   end
 
   def invalid_choice
-    puts "That's not a valid direction."
+    puts "Invalid Input."
     run
   end
 
@@ -52,7 +50,13 @@ class Game
       end
   end
 
-  def go_in_direction(d)
+  def is_command?(user_input)
+    COMMANDS.include?(user_input.downcase)
+  end
+
+  def is_direction?(user_input)
+    DIRECTIONS.include?(user_input)
+  end
     direction = get_direction_word(d).upcase
     puts "You decided to go #{direction}"
   end
