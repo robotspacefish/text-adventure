@@ -73,15 +73,6 @@ class Game
     end
   end
 
-  # def do_command(user_input)
-  #   input = user_input.downcase
-  #   case input
-  #   when "look"
-  #     look
-  #   when "take"
-  #   end
-  # end
-
   def move(d)
     direction = get_direction_word(d).upcase
     puts "You decided to go #{direction}"
