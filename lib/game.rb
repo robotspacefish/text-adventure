@@ -69,9 +69,18 @@ class Game
     if is_direction?(user_input)
       move(user_input)
     elsif is_command?(user_input)
-
+      self.send(user_input.downcase)
     end
   end
+
+  # def do_command(user_input)
+  #   input = user_input.downcase
+  #   case input
+  #   when "look"
+  #     look
+  #   when "take"
+  #   end
+  # end
 
   def move(d)
     direction = get_direction_word(d).upcase
