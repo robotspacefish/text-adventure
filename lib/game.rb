@@ -1,11 +1,12 @@
 class Game
-  attr_reader :position
+  attr_reader :position, :new_position, :current_room
   COMMANDS = ["look", "take"]
   DIRECTIONS = ["n", "s", "e", "w"]
 
   def initialize
     Room.create_map
     @position = 0;
+    @current_room = map[position]
   end
 
   def start
@@ -20,9 +21,9 @@ class Game
     Room.map
   end
 
-  def current_room
-    map[position]
-  end
+  # def current_room
+  #   map[position]
+  # end
 
   def get_exit_options
     {
@@ -92,7 +93,16 @@ class Game
 
   def move(d)
     direction = get_direction_word(d).upcase
-    puts "You decided to go #{direction}\n"
+    puts "You chose to go #{direction}.\n"
+
+    position = get_next_room_index(d)
+    current_room = map[position]
+
+    puts "You are now in the #{current_room.name}.\n".yellow
+  end
+
+  def get_next_room_index(direction)
+    current_room.send(direction.to_sym)
   end
 
   def run
