@@ -34,7 +34,7 @@ class Game
 
   def invalid_choice
     puts "Invalid Input."
-    run
+    update
   end
 
   def print_choices
@@ -79,6 +79,10 @@ class Game
   def run
     start
     user_input = nil
+    update(user_input)
+  end
+
+  def update(user_input = nil)
     loop do
       print_choices
 
