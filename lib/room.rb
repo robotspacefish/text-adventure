@@ -1,6 +1,6 @@
 class Room
   attr_accessor :n, :s, :e, :w, :name, :description
-  @@MAP = [4];
+  @@MAP = [];
 
   def self.create(name, n, s, e, w, description = nil)
     r = self.new
