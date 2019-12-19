@@ -21,10 +21,6 @@ class Game
     Room.map
   end
 
-  # def current_room
-  #   map[position]
-  # end
-
   def get_exit_options
     exits = {
       n: self.current_room.n,
