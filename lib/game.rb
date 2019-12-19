@@ -1,8 +1,21 @@
 class Game
   attr_reader :position
+
   def initialize
     Room.create_map
     @position = 0;
+  end
+
+  def start
+    puts "\n"
+    puts "Welcome to Text Adventure!\n"
+    puts "You are in the #{map[position].name}"
+    puts "Where do you want to go now?"
+    puts "\n"
+  end
+
+  def map
+    Room.map
   end
 
   def input_is_valid?(user_input)
@@ -48,6 +61,7 @@ class Game
   end
 
   def run
+    start
     move
   end
 end
