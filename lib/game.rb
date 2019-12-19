@@ -69,7 +69,7 @@ class Game
   end
 
   def is_direction?(user_input)
-    DIRECTIONS.include?(user_input)
+    DIRECTIONS.include?(user_input.downcase)
   end
 
   def action(user_input)
