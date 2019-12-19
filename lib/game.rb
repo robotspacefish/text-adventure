@@ -12,7 +12,7 @@ class Game
   def start
     puts "\n"
     puts "Welcome to Text Adventure!\n".blue
-    puts "You are in the #{current_room.name}\n".blue
+    puts "You are in the #{self.current_room.name}\n".blue
     puts "Where do you want to go now?".yellow
     puts "\n"
   end
@@ -26,20 +26,20 @@ class Game
   # end
 
   def get_exit_options
-    {
-      n: current_room.n,
-      s: current_room.s,
-      e: current_room.e,
-      w: current_room.w
+    exits = {
+      n: self.current_room.n,
+      s: self.current_room.s,
+      e: self.current_room.e,
+      w: self.current_room.w
     }.select { |k, v| v != -1 }
   end
 
   def print_current_exit_options
-    get_exit_options.collect { |k, v| k.to_s.upcase }.join(", ")
+   get_exit_options.collect { |k, v| k.to_s.upcase }.join(", ")
   end
 
   def look
-    puts current_room.description.blue
+    puts self.current_room.description.blue
     puts "\n"
   end
 
@@ -95,10 +95,10 @@ class Game
     direction = get_direction_word(d).upcase
     puts "You chose to go #{direction}.\n"
 
-    position = get_next_room_index(d)
-    current_room = map[position]
+    self.position = get_next_room_index(d)
+    self.current_room = map[self.position]
 
-    puts "You are now in the #{current_room.name}.\n".yellow
+    puts "You are now in the #{self.current_room.name}.\n".yellow
   end
 
   def get_next_room_index(direction)
