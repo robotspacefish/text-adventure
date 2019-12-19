@@ -10,9 +10,9 @@ class Game
 
   def start
     puts "\n"
-    puts "Welcome to Text Adventure!\n"
-    puts "You are in the #{current_room.name}"
-    puts "Where do you want to go now?"
+    puts "Welcome to Text Adventure!\n".blue
+    puts "You are in the #{current_room.name}\n".blue
+    puts "Where do you want to go now?".yellow
     puts "\n"
   end
 
@@ -25,7 +25,8 @@ class Game
   end
 
   def look
-    current_room.description
+    puts current_room.description.blue
+    puts "\n"
   end
 
   def input_is_valid?(user_input)
@@ -33,13 +34,14 @@ class Game
   end
 
   def invalid_choice
-    puts "Invalid Input."
+    puts "Invalid Input.".red
+    puts "\n"
     update
   end
 
   def print_choices
-    puts "Choose from these commands: [#{COMMANDS.join(", ")}]"
-    puts "Or enter a direction to go [N, S, E, W]: " #TODO only output directions that exist in current_room
+    puts "Choose from these commands: [#{COMMANDS.join(", ")}]".yellow
+    puts "Or enter a direction to go [N, S, E, W]: ".yellow #TODO only output directions that exist in current_room
   end
 
   def get_direction_word(direction)
