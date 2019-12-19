@@ -14,7 +14,7 @@ class Room
   end
 
   def self.create_map
-    self.create("Troll Room", -1, 2, -1, 1)
+    self.create("Troll Room", -1, 2, -1, 1, "It's a dank, dark room that smells of troll")
     self.create("Forest", -1, -1, 0, -1)
     self.create("Cave", 0, -1, -1, 3)
     self.create("Dungeon", -1, -1, 2, -1)
