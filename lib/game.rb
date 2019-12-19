@@ -59,7 +59,7 @@ class Game
 
   def print_choices
     puts "Choose from these commands: [#{COMMANDS.join(", ")}]".yellow
-    puts "Or enter a direction to go [#{print_current_exit_options}]: ".yellow #TODO only output directions that exist in current_room
+    puts "Or enter a direction to go [#{print_current_exit_options}]: ".yellow
   end
 
   def get_direction_word(direction)
