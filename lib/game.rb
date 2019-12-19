@@ -1,7 +1,7 @@
 class Game
   attr_reader :position
   COMMANDS = ["look", "take"]
-  DIRECTIONS = ["n", "s", "e", "w"]
+  # DIRECTIONS = ["n", "s", "e", "w"]
 
   def initialize
     Room.create_map
@@ -75,7 +75,7 @@ class Game
   end
 
   def is_direction?(user_input)
-    DIRECTIONS.include?(user_input.downcase)
+    get_exit_options.include?(user_input.downcase.to_sym)
   end
 
   def action(user_input)
@@ -88,7 +88,7 @@ class Game
 
   def move(d)
     direction = get_direction_word(d).upcase
-    puts "You decided to go #{direction}"
+    puts "You decided to go #{direction}\n"
   end
 
   def run
