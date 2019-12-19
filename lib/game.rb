@@ -25,8 +25,16 @@ class Game
   end
 
   def get_exit_options
-    exits = []
-    # TODO get valid exit options for current room
+    {
+      n: current_room.n,
+      s: current_room.s,
+      e: current_room.e,
+      w: current_room.w
+    }.select { |k, v| v != -1 }
+  end
+
+  def print_current_exit_options
+    get_exit_options.collect { |k, v| k.to_s.upcase }.join(", ")
   end
 
   def look
@@ -46,9 +54,7 @@ class Game
 
   def print_choices
     puts "Choose from these commands: [#{COMMANDS.join(", ")}]".yellow
-
-    # TODO use exit options for current room
-    puts "Or enter a direction to go [N, S, E, W]: ".yellow #TODO only output directions that exist in current_room
+    puts "Or enter a direction to go [#{print_current_exit_options}]: ".yellow #TODO only output directions that exist in current_room
   end
 
   def get_direction_word(direction)
