@@ -24,6 +24,11 @@ class Game
     map[position]
   end
 
+  def get_exit_options
+    exits = []
+    # TODO get valid exit options for current room
+  end
+
   def look
     puts current_room.description.blue
     puts "\n"
@@ -41,6 +46,8 @@ class Game
 
   def print_choices
     puts "Choose from these commands: [#{COMMANDS.join(", ")}]".yellow
+
+    # TODO use exit options for current room
     puts "Or enter a direction to go [N, S, E, W]: ".yellow #TODO only output directions that exist in current_room
   end
 
