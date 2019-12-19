@@ -1,6 +1,8 @@
 class Game
+  attr_reader :position
   def initialize
     Room.create_map
+    @position = 0;
   end
 
   def input_is_valid?(user_input)
