@@ -1,5 +1,5 @@
 class Game
-  attr_reader :position, :new_position, :current_room
+  attr_accessor :position, :new_position, :current_room
   COMMANDS = ["look", "take"]
   DIRECTIONS = ["n", "s", "e", "w"]
 
