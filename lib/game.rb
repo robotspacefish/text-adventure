@@ -37,6 +37,11 @@ class Game
     run
   end
 
+  def print_choices
+    puts "Choose from these commands: [#{COMMANDS.join(", ")}]"
+    puts "Or enter a direction to go [N, S, E, W]: " #TODO only output directions that exist in current_room
+  end
+
   def get_direction_word(direction)
     case direction.downcase
       when  'n'
@@ -63,24 +68,24 @@ class Game
       move(user_input)
     elsif is_command?(user_input)
 
+    end
+  end
+
+  def move(d)
     direction = get_direction_word(d).upcase
     puts "You decided to go #{direction}"
   end
 
-  def move
-    user_input = nil
-    until user_input do
-      puts "Enter a direction to go [N, S, E, W]"
-      user_input = gets.strip
-
-      input_is_valid?(user_input) ?
-        go_in_direction(user_input)
-        : invalid_choice
-    end
-  end
-
   def run
     start
-    move
+    user_input = nil
+    loop do
+      print_choices
+
+      user_input = gets.strip
+      puts "\n"
+      input_is_valid?(user_input) ?
+        action(user_input) : invalid_choice
+    end
   end
 end
