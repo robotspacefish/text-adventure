@@ -1,5 +1,7 @@
 class Game
   attr_reader :position
+  COMMANDS = ["look", "take"]
+  DIRECTIONS = ["n", "s", "e", "w"]
 
   def initialize
     Room.create_map
