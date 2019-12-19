@@ -11,7 +11,7 @@ class Game
   def start
     puts "\n"
     puts "Welcome to Text Adventure!\n"
-    puts "You are in the #{map[position].name}"
+    puts "You are in the #{current_room.name}"
     puts "Where do you want to go now?"
     puts "\n"
   end
@@ -20,6 +20,9 @@ class Game
     Room.map
   end
 
+  def current_room
+    map[position]
+  end
   def input_is_valid?(user_input)
     user_input.downcase == 'n' ||
     user_input.downcase == 's' ||
