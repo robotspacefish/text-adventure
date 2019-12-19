@@ -21,6 +21,20 @@ class Game
     Room.map
   end
 
+  def quit
+    puts "Do you really want to quit? [y/n]".red
+    user_input = gets.strip
+
+    if really_quit?(user_input)
+      puts "\nFarewell, traveler!\n".red
+      exit
+    end
+  end
+
+  def really_quit?(user_input)
+    user_input.downcase == 'y'
+  end
+
   def get_exit_options
     exits = {
       n: self.current_room.n,
@@ -54,8 +68,9 @@ class Game
   end
 
   def print_choices
-    puts "Choose from these commands: [#{COMMANDS.join(", ")}]".yellow
-    puts "Or enter a direction to go [#{print_current_exit_options}]: ".yellow
+    puts "Choose from these commands: [#{COMMANDS.join(", ")}]"
+    puts "Enter a direction to go [#{print_current_exit_options}]"
+    puts "Or type 'quit' to close the game".red
   end
 
   def get_direction_word(direction)
@@ -113,8 +128,13 @@ class Game
 
       user_input = gets.strip
       puts "\n"
-      input_is_valid?(user_input) ?
+
+      if user_input.downcase == 'quit'
+        quit
+      else
+        input_is_valid?(user_input) ?
         action(user_input) : invalid_choice(user_input)
+      end
     end
   end
 end
