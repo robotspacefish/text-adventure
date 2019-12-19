@@ -23,6 +23,10 @@ class Game
   def current_room
     map[position]
   end
+
+  def look
+    current_room.description
+  end
   def input_is_valid?(user_input)
     user_input.downcase == 'n' ||
     user_input.downcase == 's' ||
