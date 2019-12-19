@@ -98,7 +98,7 @@ class Game
     self.position = get_next_room_index(d)
     self.current_room = map[self.position]
 
-    puts "You are now in the #{self.current_room.name}.\n".yellow
+    puts "You are now in the #{self.current_room.name}.\n".blue
   end
 
   def get_next_room_index(direction)
