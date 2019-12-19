@@ -57,6 +57,12 @@ class Game
   def is_direction?(user_input)
     DIRECTIONS.include?(user_input)
   end
+
+  def action(user_input)
+    if is_direction?(user_input)
+      move(user_input)
+    elsif is_command?(user_input)
+
     direction = get_direction_word(d).upcase
     puts "You decided to go #{direction}"
   end
