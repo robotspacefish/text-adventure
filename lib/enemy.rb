@@ -1,6 +1,6 @@
 class Enemy < Actor
   @@all = []
-  attr_accessor :type
+  # attr_accessor :type
 
   def initialize(location)
     super
