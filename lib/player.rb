@@ -1,5 +1,5 @@
 class Player < Actor
-  def initialize(location)
+  def initialize(location = nil)
     super
     @type = 'player'
   end
