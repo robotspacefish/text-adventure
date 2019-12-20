@@ -22,4 +22,8 @@ class Dungeon < Room
 
     self.maps << d1.map
   end
+
+  def self.init_map(rows, cols)
+    Array.new(rows*cols).fill(:wall)
+  end
 end
