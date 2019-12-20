@@ -7,7 +7,7 @@ class Game
 
   def initialize
     Room.create_map
-    @player = Actor.new(map[0])
+    @player = Player.new(map[0])
   end
 
   def start
