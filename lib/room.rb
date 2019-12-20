@@ -1,6 +1,5 @@
 class Room < Thing
   attr_accessor :n, :s, :e, :w, :enemies
-  @@MAP = [];
 
   def self.create(name, n, s, e, w, description = nil)
     r = self.new
@@ -11,15 +10,12 @@ class Room < Thing
     r.w = w
     r.description = description
     r.enemies = []
-    self.map << r
+    r
+    # self.map << r
   end
 
-  def self.create_map
-    self.create("Troll Room", -1, 2, -1, 1, "It's a dank, dark room that smells of troll")
-    self.create("Forest", -1, -1, 0, -1)
-    self.create("Cave", 0, -1, -1, 3)
-    self.create("Dungeon", -1, -1, 2, -1)
-  end
+  # def self.create_map
+  # end
 
   def self.map
     @@MAP

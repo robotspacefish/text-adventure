@@ -1,13 +1,16 @@
 class Game
   # attr_accessor :position, :new_position, :current_room
   attr_reader :player
+  attr_accessor :current_dungeon
 
   COMMANDS = ["look", "take"]
   DIRECTIONS = ["n", "s", "e", "w"]
 
   def initialize
-    Room.create_map
-    @player = Player.create(map[0])
+    # Room.create_map
+    Dungeon.create_dungeon_01
+    @current_dungeon = 1
+    @player = Player.create(map[2])
   end
 
   def start
@@ -19,7 +22,8 @@ class Game
   end
 
   def map
-    Room.map
+    # Room.map
+    Dungeon.maps[current_dungeon - 1]
   end
 
   def quit
