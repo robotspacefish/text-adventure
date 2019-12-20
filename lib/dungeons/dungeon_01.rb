@@ -6,9 +6,11 @@ class Dungeon_01 < Dungeon
   end
 
   def self.create
-    [room_1, room_2, room_3].each do |r|
+    dungeon = [room_1, room_2, room_3].collect do |r|
       self.rooms[r[:loc]] = Room.create(r)
     end
+
+    Dungeon.add(dungeon)
   end
 
   def self.room_1
