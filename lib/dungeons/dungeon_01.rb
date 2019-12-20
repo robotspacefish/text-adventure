@@ -11,6 +11,8 @@ class Dungeon_01 < Dungeon
     end
 
     Dungeon.add(dungeon)
+
+    self.rooms
   end
 
   def self.room_1

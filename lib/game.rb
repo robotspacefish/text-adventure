@@ -7,9 +7,8 @@ class Game
   DIRECTIONS = ["n", "s", "e", "w"]
 
   def initialize
-    Dungeon_01.create
-    @current_dungeon = 1
-    @player = Player.create(map[1])
+    @current_dungeon = Dungeon_01.create
+    @player = Player.create(current_dungeon[2])
   end
 
   def start
@@ -21,7 +20,7 @@ class Game
   end
 
   def map
-    Dungeon.maps[current_dungeon - 1]
+    current_dungeon
   end
 
   def quit
@@ -40,11 +39,11 @@ class Game
 
   def get_exit_options
     exits = {
-      n: player.location.n,
-      s: player.location.s,
-      e: player.location.e,
-      w: player.location.w
-    }.select { |k, v| v != -1 }
+      n: player.location.n[:leads_to],
+      s: player.location.s[:leads_to],
+      e: player.location.e[:leads_to],
+      w: player.location.w[:leads_to]
+    }.select { |k, v| v != :no_exit }
   end
 
   def print_current_exit_options
@@ -114,11 +113,11 @@ class Game
     puts "You chose to go #{direction}.\n"
     player.location = map[get_next_room_index(d)]
 
-    puts "You are now in the #{player.location.name}.\n".blue
+    puts "You are now in Room #{player.location.loc}.\n".blue
   end
 
   def get_next_room_index(direction)
-    player.location.send(direction.to_sym)
+    player.location.send(direction.to_sym)[:leads_to]
   end
 
   def run
