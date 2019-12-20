@@ -27,7 +27,7 @@ class Game
     user_input = gets.strip
 
     if really_quit?(user_input)
-      puts "\nFarewell, traveler!\n".red
+      puts "\nFarewell, adventurer!\n".red
       exit
     end
   end
