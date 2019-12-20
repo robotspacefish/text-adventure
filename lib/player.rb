@@ -1,7 +1,13 @@
 class Player < Actor
-  def initialize(location)
+  def initialize
     super
-    @type = 'player'
+  end
+
+  def self.create(location)
+    p = self.new
+    p.type = 'player'
+    p.location = location
+    p
   end
 
   def take(item)

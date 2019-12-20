@@ -1,4 +1,12 @@
 class Thing
-  attr_reader :name
-  attr_accessor :description, :location, :type
+  attr_accessor :name, :description, :location, :type, :gold, :inventory
+
+  def initialize
+    @gold = []
+    @inventory = []
+  end
+
+  def total_gold
+    self.gold.length
+  end
 end
