@@ -1,8 +1,4 @@
 class Player < Actor
-  def initialize
-    super
-  end
-
   def self.create(location)
     p = self.new
     p.type = 'player'
