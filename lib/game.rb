@@ -50,7 +50,11 @@ class Game
   end
 
   def look
-    puts player.location.description.blue
+    if player.location.description
+      puts player.location.description.blue
+    else
+      puts "It's too dark to see anything." # todo
+    end
     puts "\n"
   end
 
