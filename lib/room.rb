@@ -1,5 +1,5 @@
 class Room < Thing
-  attr_accessor :n, :s, :e, :w, :enemies, :exits
+  attr_accessor :n, :s, :e, :w, :loc, :enemies, :exits
 
   def self.create(room_hash)
     r = self.new
@@ -7,6 +7,7 @@ class Room < Thing
     r.s = room_hash[:s]
     r.e = room_hash[:e]
     r.w = room_hash[:w]
+    r.loc = room_hash[:loc]
     r.description = room_hash[:description]
     r.inventory = room_hash[:inventory]
     r.enemies = room_hash[:enemies]
