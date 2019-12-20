@@ -22,4 +22,8 @@ class Item < Thing
   def self.create_gold
     self.create_item("gold", "a piece of gold")
   end
+
+  def self.create_gold_key
+    self.create_item("key", "a small, gold key" )
+  end
 end
