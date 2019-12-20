@@ -1,7 +1,13 @@
 class Enemy < Actor
-  def initialize(type = nil)
+  @@all = []
+  attr_accessor :type
+
+  def initialize(location)
     super
-    @type = type
+  end
+
+  def self.all
+    @@all
   end
 
   def drop(item)
