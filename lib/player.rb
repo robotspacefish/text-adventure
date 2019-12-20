@@ -6,10 +6,11 @@ class Player < Actor
 
   def take(item)
     self.inventory << item
+    puts "You took the #{item}."
   end
 
   def drop(item)
     super
-    "You dropped #{item}."
+    puts "You dropped the #{item}."
   end
 end
