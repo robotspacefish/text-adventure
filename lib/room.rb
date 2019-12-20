@@ -1,5 +1,5 @@
 class Room < Thing
-  attr_accessor :n, :s, :e, :w
+  attr_accessor :n, :s, :e, :w, :enemies
   @@MAP = [];
 
   def self.create(name, n, s, e, w, description = nil)
@@ -10,6 +10,7 @@ class Room < Thing
     r.e = e
     r.w = w
     r.description = description
+    r.enemies = []
     self.map << r
   end
 
