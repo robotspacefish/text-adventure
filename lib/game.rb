@@ -1,18 +1,19 @@
 class Game
-  attr_accessor :position, :new_position, :current_room
+  # attr_accessor :position, :new_position, :current_room
+  attr_reader :player
+
   COMMANDS = ["look", "take"]
   DIRECTIONS = ["n", "s", "e", "w"]
 
   def initialize
     Room.create_map
-    @position = 0;
-    @current_room = map[position]
+    @player = Actor.new(map[0])
   end
 
   def start
     puts "\n"
     puts "Welcome to Text Adventure!\n".blue
-    puts "You are in the #{self.current_room.name}\n".blue
+    puts "You are in the #{player.location.name}\n".blue
     puts "Where do you want to go now?".yellow
     puts "\n"
   end
@@ -37,10 +38,10 @@ class Game
 
   def get_exit_options
     exits = {
-      n: self.current_room.n,
-      s: self.current_room.s,
-      e: self.current_room.e,
-      w: self.current_room.w
+      n: player.location.n,
+      s: player.location.s,
+      e: player.location.e,
+      w: player.location.w
     }.select { |k, v| v != -1 }
   end
 
@@ -49,7 +50,7 @@ class Game
   end
 
   def look
-    puts self.current_room.description.blue
+    puts player.location.description.blue
     puts "\n"
   end
 
@@ -105,15 +106,13 @@ class Game
   def move(d)
     direction = get_direction_word(d).upcase
     puts "You chose to go #{direction}.\n"
+    player.location = map[get_next_room_index(d)]
 
-    self.position = get_next_room_index(d)
-    self.current_room = map[self.position]
-
-    puts "You are now in the #{self.current_room.name}.\n".blue
+    puts "You are now in the #{player.location.name}.\n".blue
   end
 
   def get_next_room_index(direction)
-    current_room.send(direction.to_sym)
+    player.location.send(direction.to_sym)
   end
 
   def run
