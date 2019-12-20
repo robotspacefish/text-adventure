@@ -1,22 +1,18 @@
 class Room < Thing
-  attr_accessor :n, :s, :e, :w, :enemies, :exits
+  attr_accessor :n, :s, :e, :w, :loc, :enemies, :exits
 
-  def self.create(name, n, s, e, w, description = nil)
+  def self.create(room_hash)
     r = self.new
-    r.name = name
-    r.n = n
-    r.s = s
-    r.e = e
-    r.w = w
-    r.description = description
-    r.enemies = []
-    r.exits = {}
+    r.n = room_hash[:n]
+    r.s = room_hash[:s]
+    r.e = room_hash[:e]
+    r.w = room_hash[:w]
+    r.loc = room_hash[:loc]
+    r.description = room_hash[:description]
+    r.inventory = room_hash[:inventory]
+    r.enemies = room_hash[:enemies]
     r
-    # self.map << r
   end
-
-  # def self.create_map
-  # end
 
   def self.map
     @@MAP

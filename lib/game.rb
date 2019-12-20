@@ -7,22 +7,20 @@ class Game
   DIRECTIONS = ["n", "s", "e", "w"]
 
   def initialize
-    # Room.create_map
-    Dungeon.create_dungeon_01
+    Dungeon_01.create
     @current_dungeon = 1
-    @player = Player.create(map[2])
+    @player = Player.create(map[1])
   end
 
   def start
     puts "\n"
     puts "Welcome to Text Adventure!\n".blue
-    puts "You are in the #{player.location.name}\n".blue
+    puts "You are in Room #{player.location.loc}\n".blue
     puts "Where do you want to go now?".yellow
     puts "\n"
   end
 
   def map
-    # Room.map
     Dungeon.maps[current_dungeon - 1]
   end
 
