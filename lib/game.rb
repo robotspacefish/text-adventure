@@ -7,7 +7,7 @@ class Game
 
   def initialize
     Room.create_map
-    @player = Actor.new(map[0])
+    @player = Player.create(map[0])
   end
 
   def start
@@ -50,7 +50,11 @@ class Game
   end
 
   def look
-    puts player.location.description.blue
+    if player.location.description
+      puts player.location.description.blue
+    else
+      puts "It's too dark to see anything." # todo
+    end
     puts "\n"
   end
 

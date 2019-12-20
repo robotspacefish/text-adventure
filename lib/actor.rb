@@ -1,8 +1,11 @@
 class Actor < Thing
-  attr_accessor :location
-
-  def initialize(location)
-    @location = location
+  def self.create
+    a = self.new
+    a.location = location
+    a
   end
 
+  def drop(item)
+    self.inventory.delete(item)
+  end
 end
