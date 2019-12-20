@@ -1,14 +1,18 @@
 class Room
-  attr_accessor :n, :s, :e, :w, :name, :description
+  attr_accessor :name, :description
+  attr_reader :n, :s, :e, :w
   @@MAP = [];
 
+  def initialize(n, s, e, w)
+    @n = n
+    @s = s
+    @e = e
+    @w = w
+  end
+
   def self.create(name, n, s, e, w, description = nil)
-    r = self.new
+    r = self.new(n, s, e, w)
     r.name = name
-    r.n = n
-    r.s = s
-    r.e = e
-    r.w = w
     r.description = description
     self.map << r
   end
